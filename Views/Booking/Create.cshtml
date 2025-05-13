@@ -1,0 +1,39 @@
+﻿@model EventEasePOE.Models.Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h1>Create Booking</h1>
+
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="EventId" class="form-label"></label>
+        <select asp-for="EventId" class="form-control" asp-items="ViewBag.EventId"></select>
+        <span asp-validation-for="EventId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="VenueId" class="form-label"></label>
+        <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId"></select>
+        <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="BookingDate" class="form-label"></label>
+        <input asp-for="BookingDate" type="date" class="form-control" />
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Book</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

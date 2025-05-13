@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EventEasePOE.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venues";
+}
+
+<h1>Venues</h1>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Venue</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Location)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Capacity)</th>
+            <th>Venue Image</th>
+            <th>@Html.DisplayNameFor(model => model.First().ContactEmail)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Location</td>
+                <td>@item.Capacity</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" alt="Venue Image" style="max-width: 100px; max-height: 100px;" />
+                    }
+                    else
+                    {
+                        <span>No image</span>
+                    }
+                </td>
+                <td>@item.ContactEmail</td>
+                <td>
+                    <!-- Link to View the Venue Details -->
+                    <a asp-action="Details" asp-route-id="@item.Id">View</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

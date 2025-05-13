@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EventEasePOE.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Events</h1>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Event Date</th>
+            <th>Venue ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td>
+                <td>@item.EventDate.ToShortDateString()</td>
+                <td>@item.VenueId</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EventId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EventId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EventId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

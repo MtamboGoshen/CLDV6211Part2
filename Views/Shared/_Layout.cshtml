@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EventEasePOE</title>
+    
+    <!-- Bootstrap & Custom Styles -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EventEasePOE.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: #212529 !important;
+        }
+
+        .navbar .nav-link {
+            color: #f8f9fa !important;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar .nav-link:hover {
+            color: #0d6efd !important;
+        }
+
+        .navbar-brand {
+            color: #0d6efd !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .container main {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background: #212529;
+            color: #ccc;
+            padding: 15px 0;
+        }
+
+        footer a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">EventEasePOE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Venue" asp-action="Index">Venue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Event" asp-action="Index">Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Booking" asp-action="Index">Booking</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            &copy; 2025 - EventEasePOE |
+            <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
